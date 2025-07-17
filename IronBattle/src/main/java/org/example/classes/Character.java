@@ -2,17 +2,17 @@ package org.example.classes;
 
 import java.util.UUID;
 
-abstract class character {
+abstract class Character {
     private String id = RandomId();
     private String name;
-    private int hp ; //random between 100-200 to warriors and 50-100 for wizards, representing the health points (Private member)
+    private int hp; //random between 100-200 to warriors and 50-100 for wizards, representing the health points (Private member)
     private boolean isAlive = true;
 
     public String RandomId() {
         return this.id = UUID.randomUUID().toString(); // El ID se genera automáticamente al construir el objeto
     }
 
-    public character(String name, int hp) {
+    public Character(String name, int hp) {
         this.name = name;
         this.hp = hp;
     }
@@ -42,6 +42,15 @@ abstract class character {
     }
 
     public void setHp(int hp) {
+        if ( this instanceof Warrior) {
+            if (hp < 100 || hp > 200) {
+                throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
+            }
+        } else if ( this instanceof Wizard ) {
+            if (hp < 50 || hp > 100) {
+                throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
+            }
+        }
         this.hp = hp;
     }
 
