@@ -58,7 +58,15 @@ abstract class Character {
         this.isAlive = isAlive;
     }
 
+    //methods
+
+    public void getInfo() {
+         System.out.println("Name: " + getName() + " Health Points: " + getHp());
+    }
+
+
 }
+
 
 
 //This class will have:

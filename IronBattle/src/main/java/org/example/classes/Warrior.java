@@ -24,15 +24,23 @@ public class  Warrior extends Character implements Attack {
         return strength;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
     public int getStamina() {
         return stamina;
     }
 
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
     public void setStamina(int stamina) {
         this.stamina = stamina;
+    }
+
+
+      // methods (Attack)
+    @Override
+    public void getInfo(){
+            super.getInfo();
+             System.out.println( " Stamina: " + getStamina() + " Strength: " + getStrength()+ "  sfdsvscsgfdsDCSCupoDSAASDDFdsafxsd–…„{}¨Ç:_;");da
     }
 }
