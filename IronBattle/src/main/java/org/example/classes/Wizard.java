@@ -12,7 +12,7 @@ public class  Wizard extends Character implements Attack {
     // Constructor for Wizard class
 
     public Wizard (String name, int hp, int mana, int intelligence) {
-        super(name , hp);
+        super(name, hp);
         this.mana = mana;
         this.intelligence = intelligence;
     }
@@ -31,8 +31,6 @@ public class  Wizard extends Character implements Attack {
         return intelligence;
     }
 
-
-
     public void setMana(int mana){
         this.mana = mana;
     }
@@ -40,4 +38,26 @@ public class  Wizard extends Character implements Attack {
     public void setIntelligence (int intelligence){
         this.intelligence = intelligence;
     }
+
+    @Override
+    public void attack (Character enemy) {
+        Random rand = new Random();
+        int damage= 0;
+        if (mana>=5 && rand.nextBoolean()) {
+            //Fireball
+            damage = intelligence;
+            mana -= 5;
+            System.out.println (getName()+"cast Fireball"+ damage + "damage!");
+        } else if (mana >=1){
+            //staff hit
+            damage=2;
+            mana +=1;
+            System.out.println(getName()+"hit with Staff for"+damage+"damage!");
+        } else {
+            //no mana
+            mana +=2;
+            System.out.println(getName()+"is out of mana and regains2")
+        }
+    } enemy.setHp (enemy.getHp()-damage);
+
 }
