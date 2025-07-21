@@ -13,7 +13,7 @@ public class GameLauncher {
     private final Random random = new Random();
     private final ArrayList<Character> characters = new ArrayList<>();
 
-    public void gameLauncher() {
+    public void launch() {
         System.out.println("¡¡Te damos la bienvenida a Ironhack Battle!!");
 
         int option;
