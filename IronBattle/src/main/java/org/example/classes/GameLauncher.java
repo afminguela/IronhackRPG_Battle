@@ -1,10 +1,19 @@
+import org.example.classes.Wizard;
+import org.example.classes.Warrior;
+import org.example.classes.Character;
+
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class GameLauncher {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
-        //Lógica
-        System.out.println("¡¡Te damos la bienvenida a IronhackBattle!!");
+        Random random = new Random();
+        ArrayList<Character> characters = new ArrayList<>();
+
+        System.out.println("¡¡Te damos la bienvenida a Ironhack Battle!!");
 
         int option;
 
@@ -13,45 +22,56 @@ public class GameLauncher {
             System.out.println("1. Crear personaje personalizado");
             System.out.println("2. Crear personaje aleatorio");
             System.out.println("3. Salir");
-            System.out.println("Elige una opción: ");
+            System.out.print("Elige una opción: ");
             option = scanner.nextInt();
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
-                    System.out.println("Has elegido crear un personaje personalizado.");
-                    System.out.println("Introduce el nombre de tu personaje: ");
+                    System.out.print("Introduce el nombre de tu personaje: ");
                     String namePj = scanner.nextLine();
 
                     System.out.println("Elige la clase de tu personaje: ");
                     System.out.println("1. Guerrero");
                     System.out.println("2. Mago");
-                    int numPj = scanner.nextInt();
+                    int classOption = scanner.nextInt();
                     scanner.nextLine();
 
-                    String classPj = "";
-                    if (numPj == 1) {
-                        classPj = "Guerrero"
-                    } else if (numPj == 2) {
-                        classPj = "Mago"
+                    if (classOption == 1) {
+                        Warrior warrior = new Warrior(namePj);
+                        characters.add(warrior);
+                        System.out.println("✅ Guerrero creado: " + namePj);
+                    } else if (classOption == 2) {
+                        Wizard wizard = new Wizard(namePj);
+                        characters.add(wizard);
+                        System.out.println("✅ Mago creado: " + namePj);
                     } else {
-                        System.out.println("Esa personaje no existe, Se creará un Guerrero por defecto.");
-                        classPj = "Guerrero"
+                        System.out.println("❌ Opción inválida. No se creó ningún personaje.");
                     }
-
-                    //metodo para crear personaje con argumentos namePj, classPj.
-                    System.out.println("Personaje " + namePj + " de tipo " + classPj + " creado.");
-
                     break;
+
                 case 2:
-                    System.out.println("Has elegido crear un personaje aleatorio");
+                    String randomName = "PJ" + (characters.size() + 1);
+                    if (random.nextBoolean()) {
+                        Warrior warrior = new Warrior(randomName);
+                        characters.add(warrior);
+                        System.out.println("🔀 Guerrero aleatorio creado: " + randomName);
+                    } else {
+                        Wizard wizard = new Wizard(randomName);
+                        characters.add(wizard);
+                        System.out.println("🔀 Mago aleatorio creado: " + randomName);
+                    }
                     break;
+
                 case 3:
                     System.out.println("¡Hasta pronto!");
                     break;
+
                 default:
                     System.out.println("Opción no válida. Intenta de nuevo.");
             }
-        } while (option != 3)
+
+        } while (option != 3);
 
         scanner.close();
     }
