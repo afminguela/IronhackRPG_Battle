@@ -12,7 +12,7 @@ public class  Warrior extends Character implements Attack {
 
         // Constructor for Warrior class
         public Warrior (String name, int hp, int stamina, int strength) {
-            super(name , hp);
+            super(name, hp);
             this.stamina =stamina;
             this.strength = strength;
         }
@@ -24,15 +24,57 @@ public class  Warrior extends Character implements Attack {
         return strength;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
     public int getStamina() {
         return stamina;
     }
 
+   
+
+     public void setStrength(int strength) {
+
+        if (!strength) {
+            this.strength = new Random().nextInt(1) + 50;
+        } else {
+            this.strength = strength;
+        }
+    }
     public void setStamina(int stamina) {
-        this.stamina = stamina;
+
+        if (!stamina){
+            this.stamina = new Random().nextInt(51) + 50;
+        }else
+            this.stamina = stamina;
+    }
+
+ // methods (Attack & Get info)
+    @Override
+    public void attack (Character enemy){
+            Random rand = new Random();
+            int damage = 0;
+            if (stamina >=5 && rand.nextBoolean()) {
+                //Heavy attack
+                damage = strenght;
+                stamina-= 5;
+                System.out.println(getName() + " performs a Heavy Attack for" + damage + "damage!");
+            } else if (stamina >=1){
+                //Weak attack
+                damage = strength/2;
+                stamina +=1;
+                System.out.println(getName()) + " performs a Weak Attack for"+damage+"damage!");
+            } else {
+                //No attack, regain stamina
+                stamina += 2;
+                System.out.println(getName()) + "is too tired and regains 2 stamina");
+            }
+            enemy.setHp(enemy.getHp()-damage);
+
+
+     
+    @Override
+    public void getInfo(){
+            super.getInfo();
+             System.out.println( " Stamina: " + getStamina() + " Strength: " + getStrength()+ " ")
+    }
+
     }
 }
