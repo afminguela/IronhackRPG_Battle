@@ -24,15 +24,45 @@ public class  Warrior extends Character implements Attack {
         return strength;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
     public int getStamina() {
         return stamina;
     }
 
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
     public void setStamina(int stamina) {
         this.stamina = stamina;
+    }
+
+
+      // methods (Attack)
+    @Override
+    public void getInfo(){
+            super.getInfo();
+             System.out.println( " Stamina: " + getStamina() + " Strength: " + getStrength()+ " ")
+    }
+
+    @Override
+    public void attack (Character enemy){
+        Random rand = new Random();
+        int damage = 0;
+        if (stamina >=5 && rand.nextBoolean()) {
+            //Heavy attack
+            damage = strenght;
+            stamina-= 5;
+            System.out.println(getName() + " performs a Heavy Attack for" + damage + "damage!");
+        } else if (stamina >=1){
+            //Weak attack
+            damage = strength/2;
+            stamina +=1;
+            System.out.println(getName()) + " performs a Weak Attack for"+damage+"damage!");
+        } else {
+            //No attack, regain stamina
+            stamina += 2;
+            System.out.println(getName()) + "is too tired and regains 2 stamina");
+        }
+        enemy.setHp(enemy.getHp()-damage);
     }
 }

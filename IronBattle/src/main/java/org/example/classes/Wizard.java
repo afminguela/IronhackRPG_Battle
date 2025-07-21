@@ -20,7 +20,7 @@ public class  Wizard extends Character implements Attack {
 
 //mana = new Random().nextInt(1) + 50;
 // intelligence = new Random().nextInt(51) + 50;
-// hp = new Random().nextInt(10) + 50)
+//
 
     // getters y setters
     public int getMana(){
@@ -33,11 +33,19 @@ public class  Wizard extends Character implements Attack {
 
 
 
-    public void setMana(int mana){
-        this.mana = mana;
-    }
+    public void setMana(int mana) {
 
+        if (!mana) {
+            this.mana = new Random().nextInt(1) + 50;
+        } else {
+            this.mana = mana;
+        }
+    }
     public void setIntelligence (int intelligence){
-        this.intelligence = intelligence;
+
+        if (!intelligence){
+            this.intelligence = new Random().nextInt(51) + 50;
+        }else
+            this.intelligence = intelligence;
     }
 }

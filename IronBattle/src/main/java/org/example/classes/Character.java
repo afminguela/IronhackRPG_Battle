@@ -1,5 +1,6 @@
 package org.example.classes;
 
+import java.util.Random;
 import java.util.UUID;
 
 abstract class Character {
@@ -42,23 +43,35 @@ abstract class Character {
     }
 
     public void setHp(int hp) {
+        //primero comprueba si es un warrior o un wizard, y luego si le pasamos valor de hp
         if ( this instanceof Warrior) {
+             !hp ? this.hp = new Random().nextInt(10) + 50) : this.hp = hp;
+
             if (hp < 100 || hp > 200) {
                 throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
             }
         } else if ( this instanceof Wizard ) {
+            !hp ? this.hp = new Random().nextInt(10) + 50) : this.hp = hp;
             if (hp < 50 || hp > 100) {
                 throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
             }
         }
-        this.hp = hp;
+        this.hp = hp;  // para que pueda haber mas tipos de personaje
     }
 
     public void setIsAlive(boolean isAlive) {
         this.isAlive = isAlive;
     }
 
+    //methods
+
+    public void getInfo() {
+         System.out.println("Name: " + getName() + " Health Points: " + getHp());
+    }
+
+
 }
+
 
 
 //This class will have:
