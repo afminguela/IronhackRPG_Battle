@@ -22,7 +22,8 @@ public class GameLauncher {
             System.out.println("\nMenú principal");
             System.out.println("1. Crear personaje personalizado");
             System.out.println("2. Crear personaje aleatorio");
-            System.out.println("3. Salir");
+            System.out.println("3. Mostrar personajes creados");
+            System.out.println("4. Salir");
             System.out.print("Elige una opción: ");
             option = scanner.nextInt();
             scanner.nextLine(); // Limpiar buffer
@@ -30,11 +31,12 @@ public class GameLauncher {
             switch (option) {
                 case 1 -> createCustomCharacter();
                 case 2 -> createRandomCharacter();
-                case 3 -> System.out.println("¡Hasta pronto!");
+                case 3 -> showAllCharacters();
+                case 4 -> System.out.println("¡Hasta pronto!");
                 default -> System.out.println("❗ Opción no válida. Intenta de nuevo.");
             }
 
-        } while (option != 3);
+        } while (option != 4);
 
         scanner.close();
     }
@@ -72,6 +74,18 @@ public class GameLauncher {
             Wizard wizard = new Wizard(name);
             characters.add(wizard);
             System.out.println("🔀 Mago aleatorio creado: " + name);
+        }
+    }
+
+    private void showAllCharacters() {
+        if (characters.isEmpty()) {
+            System.out.println("❗ No hay personajes creados aún.");
+            return;
+        }
+
+        System.out.println("\n📋 Lista de personajes creados:");
+        for (Character character : characters) {
+            System.out.println(character.toString());
         }
     }
 }
