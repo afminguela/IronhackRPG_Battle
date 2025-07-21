@@ -1,17 +1,17 @@
-package org.example;
+package org.example.classes;
 
-import org.example.classes.Warrior;
-import org.example.classes.Wizard;
-import org.example.classes.Character;
+import org.example.classes.*;
+
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class GameLauncher {
-    private final Scanner scanner = new Scanner(System.in);
-    private final Random random = new Random();
-    private final ArrayList<Character> characters = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
+    private Random random = new Random();
+    private List<Character> characters = new ArrayList<>();
 
     public void launch() {
         System.out.println("¡¡Te damos la bienvenida a Ironhack Battle!!");
@@ -29,11 +29,15 @@ public class GameLauncher {
             scanner.nextLine(); // Limpiar buffer
 
             switch (option) {
-                case 1 -> createCustomCharacter();
-                case 2 -> createRandomCharacter();
-                case 3 -> showAllCharacters();
-                case 4 -> System.out.println("¡Hasta pronto!");
-                default -> System.out.println("❗ Opción no válida. Intenta de nuevo.");
+                case 1:  createCustomCharacter();
+                break;
+                case 2 : createRandomCharacter();
+                break;
+                case 3 : showAllCharacters();
+                break;
+                case 4 : System.out.println("¡Hasta pronto!");
+                continue;
+                default: System.out.println("❗ Opción no válida. Intenta de nuevo.");
             }
 
         } while (option != 4);
@@ -52,11 +56,21 @@ public class GameLauncher {
         scanner.nextLine(); // Limpiar buffer
 
         if (classOption == 1) {
+            // llamamos al constructor de 1 sola variable y le pasamos su parametro que lo hemos cogido del scaner en
+            // linea 49
             Warrior warrior = new Warrior(name);
+            // llamar a las funciones ramdom para rellenar el resto de parametros.
+            warrior.setHp(random.nextInt());
+            warrior.setStamina(random.nextInt());
+            warrior.setStrength(random.nextInt());
             characters.add(warrior);
             System.out.println("✅ Guerrero creado: " + name);
         } else if (classOption == 2) {
+
             Wizard wizard = new Wizard(name);
+            wizard.setHp(random.nextInt());
+            wizard.setIntelligence(random.nextInt());
+            wizard.setMana(random.nextInt());
             characters.add(wizard);
             System.out.println("✅ Mago creado: " + name);
         } else {
@@ -84,8 +98,16 @@ public class GameLauncher {
         }
 
         System.out.println("\n📋 Lista de personajes creados:");
-        for (Character character : characters) {
-            System.out.println(character.toString());
+
+        int counter = 0;
+        for (Character personaje : characters) {   // por cada personaje en el array eb
+            counter++;
+
+            personaje.getInfo();
+            System.out.print( counter);
+            System.out.print(" - Info personaje" + personaje.getInfo());
+
+            System.out.println("\n");
         }
     }
 }
