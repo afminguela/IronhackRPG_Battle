@@ -53,25 +53,32 @@ public class  Wizard extends Character implements Attack {
             this.intelligence = intelligence;
     }
 
-    public void attack(Character enemy) {
+   public void attack(Character enemy) {
         Random rand = new Random();
         int damage = 0;
-        if (mana >= 5 && rand.nextBoolean()) {
+        if (getMana() >= 5 && rand.nextBoolean()) {
             //Fireball
-            damage = intelligence;
-            mana -= 5;
-            System.out.println(getName() + "cast Fireball" + damage + "damage!");
-        } else if (mana >= 1) {
+            damage = getIntelligence();
+            setMana(getMana() -5);
+            System.out.println(getName() + "  Bola de fuego " + damage + " de turra!");
+            int q = enemy.getHp();
+            enemy.setHp(q - damage);
+            System.out.println(". HP del enemigo después del ataque: " + enemy.getHp());
+        } else if (getMana() >= 1) {
             //staff hit
             damage = 2;
-            mana += 1;
-            System.out.println(getName() + "hit with Staff for" + damage + "damage!");
+            setMana(getMana() + 1);
+            System.out.println(getName() + "  Toma palo " + damage + " de pupita!");
+            int q = enemy.getHp();
+            enemy.setHp(q - damage);
+            System.out.println(". HP del enemigo después del ataque: " + enemy.getHp());
         } else {
             //no mana
-            mana += 2;
-            System.out.println(getName() + "is out of mana and regains2");
+            setMana(getMana() +2);
+            System.out.println(getName() + "  Necesito un café, ahora recargo");
+
         }
-        enemy.setHp(enemy.getHp() - damage);
+
     }
 
 

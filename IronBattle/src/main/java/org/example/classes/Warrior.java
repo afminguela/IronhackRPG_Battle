@@ -59,18 +59,26 @@ public class Warrior extends Character implements Attack {
             //Heavy attack
             damage = strength;
             stamina -= 5;
-            System.out.println(getName() + " performs a Heavy Attack for" + damage + "damage!");
+            int q = enemy.getHp();
+            enemy.setHp(q - damage);
+            System.out.println(getName() + " Hostia final " + damage + " de turra!");
+            System.out.println("HP del enemigo después del ataque: " + enemy.getHp());
         } else if (stamina >= 1) {
             //Weak attack
             damage = strength / 2;
             stamina += 1;
-            System.out.println(getName() + " performs a Weak Attack for" + damage + "damage!");
+            int q = enemy.getHp();
+            enemy.setHp(q - damage);
+            System.out.println(getName() + " Cachetada suave " + damage + " de pupita!");
+            System.out.println("HP del enemigo después del ataque: " + enemy.getHp());
         } else {
             //No attack, regain stamina
+
             stamina += 2;
-            System.out.println(getName() + "is too tired and regains 2 stamina");
+
+            System.out.println(getName() + "Dame un momento, por favoz... stamina vuelve");
         }
-        enemy.setHp(enemy.getHp() - damage);
+
 
     }
      

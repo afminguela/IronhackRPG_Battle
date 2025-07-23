@@ -57,11 +57,11 @@ public abstract class Character {
                     if (hp == -1) {
                         this.hp = new Random().nextInt(50,100);
                     }
-                    if (this.hp < 50  ) {
+                    /*if (this.hp < 50  ) {
                         throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
                     } else if (this.hp > 100) {
                         throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
-                    }
+                    }*/
         } else { this.hp = hp;}
          // para que pueda haber mas tipos de personaje
     }
@@ -76,16 +76,9 @@ public abstract class Character {
           return "Name: " + getName() + " Health Points: " + getHp();
     }
 
+
+    public abstract void attack(Character pj2);
 }
 
 
 
-//This class will have:
-//
-//Variable called id of data type string, auto-generated (Private member)
-//Variable called name of data type string (Private member)
-//Variable called hp of data type int, random between 100-200 to warriors and 50-100 for wizards, representing the health points (Private member)
-//Variable called isAlive of data type boolean defaulted to true (Private member)
-//A “parameterized” constructor that takes name and hp (as parameters)
-//Public Getter functions to access these variables
-//Public Setter functions to change these variables
