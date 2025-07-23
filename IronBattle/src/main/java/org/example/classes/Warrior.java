@@ -41,6 +41,7 @@ public class Warrior extends Character implements Attack {
         } else {
             this.strength = strength;
         }
+
     }
     public void setStamina(int stamina) {
 
