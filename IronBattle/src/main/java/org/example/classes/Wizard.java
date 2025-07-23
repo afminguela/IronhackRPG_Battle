@@ -64,6 +64,9 @@ public class  Wizard extends Character implements Attack {
             int q = enemy.getHp();
             enemy.setHp(q - damage);
             System.out.println(". HP del enemigo después del ataque: " + enemy.getHp());
+            if (enemy.getHp() <= 0) {
+                enemy.setIsAlive(false);
+            }
         } else if (getMana() >= 1) {
             //staff hit
             damage = 2;
@@ -72,6 +75,9 @@ public class  Wizard extends Character implements Attack {
             int q = enemy.getHp();
             enemy.setHp(q - damage);
             System.out.println(". HP del enemigo después del ataque: " + enemy.getHp());
+            if (enemy.getHp() <= 0) {
+                enemy.setIsAlive(false);
+            }
         } else {
             //no mana
             setMana(getMana() +2);

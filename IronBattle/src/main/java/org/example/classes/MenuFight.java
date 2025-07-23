@@ -115,6 +115,12 @@ public class MenuFight {
             // vamos a sumar 1 al round
             round++;
             System.out.println("\n Ding ding ding Round finalizado!! cada uno a su esquina!! ");
+            if (pj1.getHp() <= 0) {
+                pj1.setIsAlive(false);
+            }
+            if (pj2.getHp() <= 0) {
+                pj2.setIsAlive(false);
+            }
         }
         if (pj1.getIsAlive() && pj2.getIsAlive()) {
             System.out.println("Lo nunca visto!! Es un Fantástico Empate!!! Ambos Contendientes están en " +
@@ -122,9 +128,9 @@ public class MenuFight {
 
             battleCustom(pj1, pj2);
         } else if (pj1.getIsAlive()) {
-            System.out.println("EL Ganador Es El Increíble: " + pj1.getName() + " El " + pj1.getClass());
+            System.out.println("EL Ganador Es El Increíble: " + pj1.getName() + " El " + pj1.getClass().getName());
         } else {
-            System.out.println("EL Ganador Es El Increíble: " + pj2.getName() + " El " + pj2.getClass());
+            System.out.println("EL Ganador Es El Increíble: " + pj2.getName() + " El " + pj2.getClass().getName());
         }
         }
 

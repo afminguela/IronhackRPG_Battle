@@ -63,6 +63,9 @@ public class Warrior extends Character implements Attack {
             enemy.setHp(q - damage);
             System.out.println(getName() + " Hostia final " + damage + " de turra!");
             System.out.println("HP del enemigo después del ataque: " + enemy.getHp());
+            if (enemy.getHp() <= 0) {
+                enemy.setIsAlive(false);
+            }
         } else if (stamina >= 1) {
             //Weak attack
             damage = strength / 2;
@@ -71,6 +74,10 @@ public class Warrior extends Character implements Attack {
             enemy.setHp(q - damage);
             System.out.println(getName() + " Cachetada suave " + damage + " de pupita!");
             System.out.println("HP del enemigo después del ataque: " + enemy.getHp());
+            if (enemy.getHp() <= 0) {
+                enemy.setIsAlive(false);
+            }
+
         } else {
             //No attack, regain stamina
 
