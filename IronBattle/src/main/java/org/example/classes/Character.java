@@ -44,22 +44,26 @@ public abstract class Character {
     public void setHp(int hp) {
         //primero comprueba si es un warrior o un wizard, y luego si le pasamos valor de hp
         if ( this instanceof Warrior) {
-            if (hp == -1) {
-                this.hp = new Random().nextInt(10) + 50;
-            }this.hp = hp;
+                    if (hp == -1) {
+                        this.hp = new Random().nextInt(100,200);
+                    }
 
-            if (hp < 100 || hp > 200) {
-                throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
-            }
+                    if (this.hp < 100) {
+                        throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
+                    } else if (this.hp > 200) {
+                        throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
+                    }
         } else if ( this instanceof Wizard ) {
-            if (hp == -1) {
-                this.hp = new Random().nextInt(10) + 50;
-            }this.hp = hp;
-            if (hp < 50 || hp > 100) {
-                throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
-            }
-        }
-        this.hp = hp;  // para que pueda haber mas tipos de personaje
+                    if (hp == -1) {
+                        this.hp = new Random().nextInt(50,100);
+                    }
+                    if (this.hp < 50  ) {
+                        throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
+                    } else if (this.hp > 100) {
+                        throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
+                    }
+        } else { this.hp = hp;}
+         // para que pueda haber mas tipos de personaje
     }
 
     public void setIsAlive(boolean isAlive) {

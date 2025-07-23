@@ -13,6 +13,8 @@ public class GameLauncher {
     private Random random = new Random();
     private List<Character> characters = new ArrayList<>();
 
+
+    // Metodo Launch que lanza el primer Scanner.
     public void launch() {
         System.out.println("¡¡Te damos la bienvenida a Ironhack Battle!!");
 
@@ -52,7 +54,8 @@ public class GameLauncher {
         System.out.println("Elige la clase de tu personaje: ");
         System.out.println("1. Guerrero");
         System.out.println("2. Mago");
-        int classOption = scanner.nextInt();
+        System.out.println("¿Que clase eliges?: ");
+        int classOption = scanner.nextInt();  // a ver si podemos que se printe a continuación y no debajo el IN
         scanner.nextLine(); // Limpiar buffer
 
         if (classOption == 1) {
@@ -60,17 +63,18 @@ public class GameLauncher {
             // linea 49
             Warrior warrior = new Warrior(name);
             // llamar a las funciones ramdom para rellenar el resto de parametros.
-            warrior.setHp(random.nextInt());
-            warrior.setStamina(random.nextInt());
-            warrior.setStrength(random.nextInt());
+            warrior.setHp(warrior.getHp());
+            warrior.setStamina(warrior.getStamina());
+            warrior.setStrength(warrior.getStrength());
+
             characters.add(warrior);
             System.out.println("✅ Guerrero creado: " + name);
         } else if (classOption == 2) {
 
             Wizard wizard = new Wizard(name);
-            wizard.setHp(random.nextInt());
-            wizard.setIntelligence(random.nextInt());
-            wizard.setMana(random.nextInt());
+            wizard.setHp(wizard.getHp());
+            wizard.setMana(wizard.getMana());
+            wizard.setIntelligence(wizard.getIntelligence());
             characters.add(wizard);
             System.out.println("✅ Mago creado: " + name);
         } else {
@@ -85,15 +89,22 @@ public class GameLauncher {
         String name = "PJ" + (characters.size() + 1);
         if (random.nextBoolean()) {
             Warrior warrior = new Warrior(name);
+            warrior.setHp(warrior.getHp());
+            warrior.setStamina(warrior.getStamina());
+            warrior.setStrength(warrior.getStrength());
+
             characters.add(warrior);
             System.out.println("🔀 Guerrero aleatorio creado: " + name);
         } else {
             Wizard wizard = new Wizard(name);
+            wizard.setHp(wizard.getHp());
+            wizard.setMana(wizard.getMana());
+            wizard.setIntelligence(wizard.getIntelligence());
             characters.add(wizard);
             System.out.println("🔀 Mago aleatorio creado: " + name);
         }
     }
-
+// Muestra todos los personajes de la lista de personajes
     private void showAllCharacters() {
         if (characters.isEmpty()) {
             System.out.println("❗ No hay personajes creados aún.");
@@ -108,7 +119,7 @@ public class GameLauncher {
 
             personaje.getInfo();
             System.out.print( counter);
-            System.out.print(" - Info personaje" + personaje.getInfo());
+            System.out.print(" - Info personaje " + personaje.getInfo());
 
             System.out.println("\n");
         }
