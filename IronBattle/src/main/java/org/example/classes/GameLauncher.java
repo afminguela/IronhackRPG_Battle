@@ -44,7 +44,7 @@ public class GameLauncher {
 
         scanner.close();
     }
-
+// Métodos  de creacion.
     private void createCustomCharacter() {
         System.out.print("Introduce el nombre de tu personaje: ");
         String name = scanner.nextLine();
@@ -77,6 +77,9 @@ public class GameLauncher {
             System.out.println("❌ Opción inválida. No se creó ningún personaje.");
         }
     }
+
+
+    // método de PJ randomizado
 
     private void createRandomCharacter() {
         String name = "PJ" + (characters.size() + 1);
