@@ -42,7 +42,7 @@ public class MenuFight {
     }
 
     private static void chooseCharacters(Scanner scanner, List<Character> characters) {
-MenuCreateCharacter.showAllCharacters(scanner,characters);
+        MenuCreateCharacter.showAllCharacters(scanner,characters);
         System.out.print("Elige el número del primer personaje: ");
         int idx1 = scanner.nextInt();
         System.out.print("Elige el número del segundo personaje: ");
