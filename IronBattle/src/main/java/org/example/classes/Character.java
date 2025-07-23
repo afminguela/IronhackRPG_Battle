@@ -18,7 +18,7 @@ public abstract class Character {
     }
     public Character(String name, int hp) {
         this.name = name;
-        this.hp = hp;
+        setHp(hp, true);
     }
 
     public String getName() {
@@ -41,29 +41,33 @@ public abstract class Character {
         this.name = name;
     }
 
-    public void setHp(int hp) {
-        //primero comprueba si es un warrior o un wizard, y luego si le pasamos valor de hp
-        if ( this instanceof Warrior) {
-                    if (hp == -1) {
-                        this.hp = new Random().nextInt(100,200);
-                    } else{ this.hp = hp;};
 
-                    if (this.hp < 100) {
-                        throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
-                    } else if (this.hp > 200) {
-                        throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
-                    }
-        } else if ( this instanceof Wizard ) {
-                    if (hp == -1) {
-                        this.hp = new Random().nextInt(50, 100);
-                    } else{ this.hp = hp;};
-                    if (this.hp < 50  ) {
-                        throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
-                    } else if (this.hp > 100) {
-                        throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
-                    }
-        } else { this.hp = hp;}
-         // para que pueda haber mas tipos de personaje
+    public void setHp(int hp, boolean inicializacion) {
+        if (inicializacion) {
+            // Validaciones solo al crear el personaje
+            if (this instanceof Warrior) {
+                if (hp == -1) {
+                    this.hp = new Random().nextInt(100, 200);
+                } else if (hp < 100 || hp > 200) {
+                    throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
+                } else {
+                    this.hp = hp;
+                }
+            } else if (this instanceof Wizard) {
+                if (hp == -1) {
+                    this.hp = new Random().nextInt(50, 100);
+                } else if (hp < 50 || hp > 100) {
+                    throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
+                } else {
+                    this.hp =hp;
+                }
+            } else {
+                this.hp = hp;
+                            }
+        } else {
+            // Actualización durante el juego, sin validaciones de rango
+            this.hp = hp;
+        }
     }
 
     public void setIsAlive(boolean isAlive) {
@@ -76,8 +80,8 @@ public abstract class Character {
           return "Name: " + getName() + " Health Points: " + getHp();
     }
 
+    public void attack(Character enemy){}
 
-    public abstract void attack(Character pj2);
 }
 
 

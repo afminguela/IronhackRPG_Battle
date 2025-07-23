@@ -60,7 +60,7 @@ public class MenuCreateCharacter {
             // linea 49
             Warrior warrior = new Warrior(name);
             // llamar a las funciones ramdom para rellenar el resto de parametros.
-            warrior.setHp(warrior.getHp());
+            warrior.setHp(warrior.getHp(),true);
             warrior.setStamina(warrior.getStamina());
             warrior.setStrength(warrior.getStrength());
 
@@ -69,7 +69,7 @@ public class MenuCreateCharacter {
         } else if (classOption == 2) {
 
             Wizard wizard = new Wizard(name);
-            wizard.setHp(wizard.getHp());
+            wizard.setHp(wizard.getHp(), true);
             wizard.setMana(wizard.getMana());
             wizard.setIntelligence(wizard.getIntelligence());
             characters.add(wizard);
@@ -87,7 +87,7 @@ public class MenuCreateCharacter {
         Random random = new Random();
         if (random.nextBoolean()) {
             Warrior warrior = new Warrior(name);
-            warrior.setHp(warrior.getHp());
+            warrior.setHp(warrior.getHp(),true);
             warrior.setStamina(warrior.getStamina());
             warrior.setStrength(warrior.getStrength());
 
@@ -95,7 +95,7 @@ public class MenuCreateCharacter {
             System.out.println("🔀 Guerrero aleatorio creado: " + name);
         } else {
             Wizard wizard = new Wizard(name);
-            wizard.setHp(wizard.getHp());
+            wizard.setHp(wizard.getHp(),true);
             wizard.setMana(wizard.getMana());
             wizard.setIntelligence(wizard.getIntelligence());
             characters.add(wizard);

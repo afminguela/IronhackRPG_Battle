@@ -54,26 +54,32 @@ public class Warrior extends Character implements Attack {
  // methods (Attack & Get info)
  public void attack(Character enemy) {
         Random rand = new Random();
-        int damage = 0;
-        if (stamina >= 5 && rand.nextBoolean()) {
+        int damage;
+        if (getStamina() >= 5 && rand.nextBoolean()) {
             //Heavy attack
-            damage = strength;
-            stamina -= 5;
+            damage = getStrength();
+            setStamina(getStamina() -5);
             int q = enemy.getHp();
-            enemy.setHp(q - damage);
-            System.out.println(getName() + " Hostia final " + damage + " de turra!");
-            System.out.println("HP del enemigo después del ataque: " + enemy.getHp());
+
+            System.out.println("\n");
+            System.out.println(getName() + " Hostia final que hace" + damage + " de turra!");
+            System.out.println("\n");
+            enemy.setHp(q - damage, false);
+            System.out.println("\n HP del enemigo después del ataque: " + enemy.getHp());
             if (enemy.getHp() <= 0) {
                 enemy.setIsAlive(false);
             }
-        } else if (stamina >= 1) {
+        } else if (getStamina() >= 1) {
             //Weak attack
-            damage = strength / 2;
-            stamina += 1;
+            damage = getStrength() / 2;
+            setStamina(getStamina() +1);
             int q = enemy.getHp();
-            enemy.setHp(q - damage);
-            System.out.println(getName() + " Cachetada suave " + damage + " de pupita!");
-            System.out.println("HP del enemigo después del ataque: " + enemy.getHp());
+
+            System.out.println("\n");
+            System.out.println(getName() + " Cachetada suave que  hace" + damage + " de pupita!");
+            System.out.println("\n");
+            enemy.setHp(q - damage, false);
+            System.out.println("\n HP del enemigo después del ataque: " + enemy.getHp());
             if (enemy.getHp() <= 0) {
                 enemy.setIsAlive(false);
             }
@@ -81,9 +87,9 @@ public class Warrior extends Character implements Attack {
         } else {
             //No attack, regain stamina
 
-            stamina += 2;
+            setStamina(getStamina() +2);
 
-            System.out.println(getName() + "Dame un momento, por favoz... stamina vuelve");
+            System.out.println(getName() + "\n Dame un momento, por favor... stamina vuelve");
         }
 
 
@@ -92,7 +98,7 @@ public class Warrior extends Character implements Attack {
     @Override
     public String getInfo(){
            return  super.getInfo() + " Stamina: " + getStamina() + " Strength: " + getStrength()+ " ";
-    };
+    }
 
 
 
