@@ -94,6 +94,8 @@ public class StoredCharacters {
 
             characters.add(personaje);
             System.out.println("✅ Personaje cargado correctamente.");
+            System.out.println( "✨✨ Has añadido Un "+ personaje.getClass().getSimpleName()+" Con " + personaje.getInfo() +
+                    " ✨✨ " );
             return personaje;
         } catch (IOException | NumberFormatException e) {
             System.out.println("❌ Error al cargar el personaje: " + e.getMessage());
