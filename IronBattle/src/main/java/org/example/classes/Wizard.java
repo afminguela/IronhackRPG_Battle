@@ -22,10 +22,6 @@ public class  Wizard extends Character implements Attack {
     }
 
 
-//mana = new Random().nextInt(1) + 50;
-// intelligence = new Random().nextInt(51) + 50;
-//
-
     // getters y setters
     public int getMana() {
         return mana;
@@ -60,11 +56,11 @@ public class  Wizard extends Character implements Attack {
             //Fireball
             damage = getIntelligence();
             setMana(getMana() -5);
-            System.out.println("\n");
+
             System.out.println(getName() + "  Lanza Bola de fuego y hace " + damage + " de turra!");
             int q = enemy.getHp();
-            enemy.setHp(q - damage, false);
-            System.out.println("\n");
+            enemy.setHp(Math.max( 0, q - damage),false);
+
             System.out.println(" HP del enemigo después del ataque: " + enemy.getHp());
             if (enemy.getHp() <= 0) {
                 enemy.setIsAlive(false);
@@ -74,11 +70,11 @@ public class  Wizard extends Character implements Attack {
             damage = 2;
             setMana(getMana() + 1);
             int q = enemy.getHp();
-            System.out.println("\n");
+
             System.out.println(getName() + "  arrea con un palo!! solo consigue " + damage + " de pupita!");
-            System.out.println("\n");
-            enemy.setHp(q - damage, false );
-            System.out.println("\n HP del enemigo después del ataque: " + enemy.getHp());
+
+            enemy.setHp(Math.max( 0, q - damage),false);
+            System.out.println(" HP del enemigo después del ataque: " + enemy.getHp());
             if (enemy.getHp() <= 0) {
                 enemy.setIsAlive(false);
             }

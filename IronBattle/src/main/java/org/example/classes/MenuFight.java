@@ -6,11 +6,11 @@ import java.util.Scanner;
 public class MenuFight {
 
     public static void fight(Scanner scanner, List<Character> characters) {
-        System.out.println("¡¡Afila el hacha, A Pegarse!!");
+        System.out.println("\n ¡¡Afila el hacha , A Pegarse!!");
         int option;
         while(true) {
 
-            System.out.println("\nMenú Batallas");
+            System.out.println("\n      Menú Batallas");
             System.out.println("1. Elegir personajes manuales");
             System.out.println("2. Batalla con personajes Random");
             System.out.println("3. Mostrar personajes creados");
@@ -40,7 +40,25 @@ public class MenuFight {
 
 
     }
+    public static String apodoRandom() {
+        String[] apodos = {
+                "El Destructor de Madrugadas",
+                "El Fabuloso del Sombrero Torcido",
+                "El Guarda Puentes",
+                "El Inenarrable",
+                "La Pesadilla de las Teteras",
+                "El Abracadabrante",
+                "El Martillo Sonriente",
+                "El Zurcidor de Destinos",
+                "La Duda Andante",
+                "El Sabio Improbable"
+        };
 
+
+        int i = new Random().nextInt(apodos.length);
+        String apodoRandom = apodos[i];
+        return apodoRandom;
+    }
     private static void chooseCharacters(Scanner scanner, List<Character> characters) {
         MenuCreateCharacter.showAllCharacters(scanner,characters);
         System.out.print("Elige el número del primer personaje: ");
@@ -57,8 +75,9 @@ public class MenuFight {
         Character pj1 = characters.get(idx1 -1);
         Character pj2 = characters.get(idx2 -1);
 
-        System.out.println("\n Dale al Enter para continuar");
+        System.out.println("\n Ya tenemos Contendientes, dale al Enter para ver SANGREEEE");
         String input = scanner.nextLine();
+
         battleCustom(pj1, pj2);
 
     }
@@ -68,7 +87,7 @@ public class MenuFight {
 // empieza el combate
         int round = 1;
         System.out.println("\n-+-+-+-+-+-+-+ Es la Hora de las Tortas -+-+-+-+--+-");
-        System.out.println(pj1.getName() +" VS " + pj2.getName());
+        System.out.println("          "+ pj1.getName() +" VS " + pj2.getName());
         System.out.println("\n");
 
         while (pj1.getIsAlive() && pj2.getIsAlive()) {
@@ -78,14 +97,17 @@ public class MenuFight {
             // vamos a ejecutar las funciones Attack de pj1 y pj2
 
             pj1.attack(pj2);
+            System.out.println("\n");
             pj2.attack(pj1);
-
+            System.out.println("\n");
+            System.out.println("\n \uD83D\uDECE\uFE0F  Ding ding ding Round finalizado!! cada uno a su " +
+                    "esquina!! ");
             System.out.println("\n Dale al Enter para continuar");
             String input = scanner.nextLine();
 
             // vamos a sumar 1 al round
             round++;
-            System.out.println("\n Ding ding ding Round finalizado!! cada uno a su esquina!! ");
+
         }
         if (pj1.getIsAlive() && pj2.getIsAlive()) {
             System.out.println("\nLo nunca visto!! Es un Fantástico Empate!!! Ambos Contendientes están en " +
@@ -93,9 +115,12 @@ public class MenuFight {
 
             battleCustom(pj1, pj2);
         } else if (pj1.getIsAlive()) {
-            System.out.println("EL Ganador Es El Increíble: " + pj1.getName() + " El " + pj1.getClass());
+
+            System.out.println("El Ganador Es:  ");
+            System.out.println("                El Increíble: " + pj1.getName() +" "+ apodoRandom());
         } else {
-            System.out.println("EL Ganador Es El Increíble: " + pj2.getName() + " El " + pj2.getClass());
+            System.out.println("El Ganador Es:  ");
+            System.out.println("                El Increíble: " + pj2.getName() +" "+ apodoRandom());
         }
     }
 
@@ -115,30 +140,30 @@ public class MenuFight {
 
         // empieza el combate
         int round = 1;
+        System.out.println("\n");
         System.out.println("-+-+-+-+-+-+-+ Es la Hora de las Tortas -+-+-+-+--+-");
-        System.out.println(pj1.getName() +" VS " + pj2.getName());
+        System.out.println("          "+pj1.getName() +" VS " + pj2.getName());
 
         while (pj1.getIsAlive() && pj2.getIsAlive()) {
             // decir por pantalla en que round estamos
-
             System.out.println("-+-+-+-+-+-+-+ Round "+ round +" -+-+-+-+--+-");
             // vamos a ejecutar las funciones Attack de pj1 y pj2
-
             pj1.attack(pj2);
+            System.out.println("\n");
             pj2.attack(pj1);
-
+            System.out.println("\n Ding ding ding Round finalizado!! cada uno a su esquina!! ");
             System.out.println("\n Dale al Enter para continuar");
             String input = scanner.nextLine();
 
             // vamos a sumar 1 al round
             round++;
-            System.out.println("\n Ding ding ding Round finalizado!! cada uno a su esquina!! ");
-            /*if (pj1.getHp() <= 0) {
+
+           if (pj1.getHp() <= 0) {
                 pj1.setIsAlive(false);
             }
             if (pj2.getHp() <= 0) {
                 pj2.setIsAlive(false);
-            }*/
+            }
         }
         if (pj1.getIsAlive() && pj2.getIsAlive()) {
             System.out.println("Lo nunca visto!! Es un Fantástico Empate!!! Ambos Contendientes están en " +
@@ -146,9 +171,12 @@ public class MenuFight {
 
             battleCustom(pj1, pj2);
         } else if (pj1.getIsAlive()) {
-            System.out.println("EL Ganador Es El Increíble: " + pj1.getName() + " El " + pj1.getClass().getName());
+            apodoRandom();
+            System.out.println("El Ganador Es:  ");
+            System.out.println("                El Increíble: " + pj1.getName() + apodoRandom());
         } else {
-            System.out.println("EL Ganador Es El Increíble: " + pj2.getName() + " El " + pj2.getClass().getName());
+            System.out.println("El Ganador Es:  ");
+            System.out.println("                El Increíble: " + pj2.getName() + apodoRandom());
         }
         }
 

@@ -1,5 +1,6 @@
 package org.example.classes;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.List;
@@ -52,8 +53,10 @@ public class MenuCreateCharacter {
         System.out.println("1. Guerrero");
         System.out.println("2. Mago");
         System.out.println("¿Que clase eliges?: ");
-        int classOption = scanner.nextInt();  // a ver si podemos que se printe a continuación y no debajo el IN
-        scanner.nextLine(); // Limpiar buffer
+        int classOption = Integer.parseInt(scanner.nextLine());  // a ver si podemos que se printe a continuación y no
+        // debajo el IN
+        scanner.nextLine();
+        // Limpiar buffer
 
         if (classOption == 1) {
             // llamamos al constructor de 1 sola variable y le pasamos su parametro que lo hemos cogido del scaner en
@@ -83,7 +86,22 @@ public class MenuCreateCharacter {
 // método de PJ randomizado
 
     public static void createRandomCharacter(Scanner scanner, List<Character> characters) {
-        String name = "PJ" + (characters.size() + 1);
+
+        String[] nombres = { "Petronilo",
+        "Eufrasio",
+                "Aniceto",
+                "Filogonio",
+                "Ruperta",
+                "Ciriaco",
+                "Basilisa",
+                "Tránsito",
+                "Eustaquio",
+                "Hermenegildo"};
+
+
+        int i = new Random().nextInt(nombres.length);
+        String nombreFeo = nombres[i];
+        String name = nombreFeo + " "+ (characters.size() + 1);
         Random random = new Random();
         if (random.nextBoolean()) {
             Warrior warrior = new Warrior(name);

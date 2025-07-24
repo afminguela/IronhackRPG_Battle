@@ -21,9 +21,9 @@ public class GameLauncher {
         int option;
 
         while (true) {
-            System.out.println("\nMenú principal");
-            System.out.println("1. Accede al Menu de personajes");
-            System.out.println("2. A Pegarse!!");
+            System.out.println("\n         Menú principal     ");
+            System.out.println("1. Crear primero los personajes");
+            System.out.println("2. Dejate de leches... A Pegarse!!");
             System.out.println("3. Salir");
 
 
