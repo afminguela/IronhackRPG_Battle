@@ -14,11 +14,12 @@ public class MenuCreateCharacter {
         while(true) {
 
             System.out.println("\n       Menú principal");
-            System.out.println("1. Crear personaje personalizado");
-            System.out.println("2. Crear personaje aleatorio");
-            System.out.println("3. Mostrar personajes creados");
-            System.out.println("4. Guardar personajes creados");
-            System.out.println("5. ↩️ Vuelve al Menú principal");
+            System.out.println("1. ✨ Crear personaje personalizado");
+            System.out.println("2. 🔀 Crear personaje aleatorio");
+            System.out.println("3. 📜 Mostrar personajes creados");
+            System.out.println("4. 💾 Guarda tu  personajes favorito");
+            System.out.println("5. ♻️ Carga tu personaje ya creado");
+            System.out.println("6. ↩️ Vuelve al Menú principal");
             System.out.print("Elige una opción: ");
             try {
                 option = scanner.nextInt();
@@ -37,7 +38,11 @@ public class MenuCreateCharacter {
                     case 4:
                         StoredCharacters.guardarPersonaje(scanner, characters);
                         break;
+
                     case 5:
+                        StoredCharacters.chargeCharacter(scanner, characters);
+                        break;
+                    case 6:
                         System.out.println(" ↩️ Volvemos atrás!");
                         return;
                     default:
