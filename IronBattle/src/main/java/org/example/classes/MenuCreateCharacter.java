@@ -17,7 +17,8 @@ public class MenuCreateCharacter {
             System.out.println("1. Crear personaje personalizado");
             System.out.println("2. Crear personaje aleatorio");
             System.out.println("3. Mostrar personajes creados");
-            System.out.println("4. ↩️ Vuelve al Menú principal");
+            System.out.println("4. Guardar personajes creados");
+            System.out.println("5. ↩️ Vuelve al Menú principal");
             System.out.print("Elige una opción: ");
             try {
                 option = scanner.nextInt();
@@ -34,6 +35,9 @@ public class MenuCreateCharacter {
                         showAllCharacters(scanner, characters);
                         break;
                     case 4:
+                        StoredCharacters.guardarPersonaje(scanner, characters);
+                        break;
+                    case 5:
                         System.out.println(" ↩️ Volvemos atrás!");
                         return;
                     default:
@@ -142,7 +146,7 @@ public class MenuCreateCharacter {
             personaje.getInfo();
             System.out.print(counter);
             System.out.print(" - Info personaje:  " + personaje.getInfo());
-
+// guardarPersonaje(personaje)
             System.out.println("\n");
         }
     }
