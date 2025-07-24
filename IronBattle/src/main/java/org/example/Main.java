@@ -1,13 +1,14 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import org.example.classes.GameLauncher;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
+        GameLauncher game = new GameLauncher();
+        game.launch();
 
+        // 1º Hacer la importación correctamente.
+        // 2º Llamar al constructor correctamente. Antes new org.example.GameLauncher() -> Ahora GameLauncher();
     }
 }

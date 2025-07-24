@@ -1,24 +1,24 @@
 package org.example.classes;
 
+import java.util.Random;
 import java.util.UUID;
 
-abstract class Character {
+public abstract class Character {
     private String id = RandomId();
     private String name;
-    private int hp; //random between 100-200 to warriors and 50-100 for wizards, representing the health points (Private member)
+    private int hp = -1  ; //random between 100-200 to warriors and 50-100 for wizards, representing the health points
+    // (Private member)
     private boolean isAlive = true;
 
     public String RandomId() {
         return this.id = UUID.randomUUID().toString(); // El ID se genera automáticamente al construir el objeto
     }
-
+    public Character(String name) {
+        this.name = name;
+    }
     public Character(String name, int hp) {
         this.name = name;
-        this.hp = hp;
-    }
-
-    public String getId() {
-        return id;
+        setHp(hp, true);
     }
 
     public String getName() {
@@ -41,32 +41,48 @@ abstract class Character {
         this.name = name;
     }
 
-    public void setHp(int hp) {
-        if ( this instanceof Warrior) {
-            if (hp < 100 || hp > 200) {
-                throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
-            }
-        } else if ( this instanceof Wizard ) {
-            if (hp < 50 || hp > 100) {
-                throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
-            }
+
+    public void setHp(int hp, boolean inicializacion) {
+        if (inicializacion) {
+            // Validaciones solo al crear el personaje
+            if (this instanceof Warrior) {
+                if (hp == -1) {
+                    this.hp = new Random().nextInt(100, 200);
+                } else if (hp < 100 || hp > 200) {
+                    throw new IllegalArgumentException("Warrior HP must be between 100 and 200");
+                } else {
+                    this.hp = hp;
+                }
+            } else if (this instanceof Wizard) {
+                if (hp == -1) {
+                    this.hp = new Random().nextInt(50, 100);
+                } else if (hp < 50 || hp > 100) {
+                    throw new IllegalArgumentException("Wizard HP must be between 50 and 100");
+                } else {
+                    this.hp =hp;
+                }
+            } else {
+                this.hp = hp;
+                            }
+        } else {
+            // Actualización durante el juego, sin validaciones de rango
+            this.hp = hp;
         }
-        this.hp = hp;
     }
 
     public void setIsAlive(boolean isAlive) {
         this.isAlive = isAlive;
     }
 
+    //methods
+
+    public String getInfo() {
+          return "Name: " + getName() + " Health Points: " + getHp();
+    }
+
+    public void attack(Character enemy){}
+
 }
 
 
-//This class will have:
-//
-//Variable called id of data type string, auto-generated (Private member)
-//Variable called name of data type string (Private member)
-//Variable called hp of data type int, random between 100-200 to warriors and 50-100 for wizards, representing the health points (Private member)
-//Variable called isAlive of data type boolean defaulted to true (Private member)
-//A “parameterized” constructor that takes name and hp (as parameters)
-//Public Getter functions to access these variables
-//Public Setter functions to change these variables
+
