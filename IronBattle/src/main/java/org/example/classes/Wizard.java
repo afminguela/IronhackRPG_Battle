@@ -57,11 +57,11 @@ public class  Wizard extends Character implements Attack {
             damage = getIntelligence();
             setMana(getMana() -5);
 
-            System.out.println(getName() + "  Lanza Bola de fuego y hace " + damage + " de turra!");
+            System.out.println(getName() + " ☄️ Lanza Bola de fuego y hace " + damage + " de turra!");
             int q = enemy.getHp();
             enemy.setHp(Math.max( 0, q - damage),false);
 
-            System.out.println(" HP del enemigo después del ataque: " + enemy.getHp());
+            System.out.println(" 🧬 Vida del enemigo después del ataque: " + enemy.getHp());
             if (enemy.getHp() <= 0) {
                 enemy.setIsAlive(false);
             }
@@ -71,17 +71,17 @@ public class  Wizard extends Character implements Attack {
             setMana(getMana() + 1);
             int q = enemy.getHp();
 
-            System.out.println(getName() + "  arrea con un palo!! solo consigue " + damage + " de pupita!");
+            System.out.println(getName() + " 𓋾 arrea con un palo!! solo consigue " + damage + " de pupita!");
 
             enemy.setHp(Math.max( 0, q - damage),false);
-            System.out.println(" HP del enemigo después del ataque: " + enemy.getHp());
+            System.out.println(" 🧬 vida del enemigo después del ataque: " + enemy.getHp());
             if (enemy.getHp() <= 0) {
                 enemy.setIsAlive(false);
             }
         } else {
             //no mana
             setMana(getMana() +2);
-            System.out.println(getName() + " \n  Necesito un café, ahora recargo");
+            System.out.println(getName() + " \n ☕ Necesito un café, ahora recargo");
 
         }
 

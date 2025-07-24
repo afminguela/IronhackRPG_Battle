@@ -62,10 +62,10 @@ public class Warrior extends Character implements Attack {
             int q = enemy.getHp();
 
 
-            System.out.println(getName() + " Hostia final que hace " + damage + " de turra!");
+            System.out.println(getName() + " 👊 Hostia final que hace " + damage + " de turra!");
 
             enemy.setHp(Math.max( 0, (q - damage)),false);
-            System.out.println("HP del enemigo después del ataque: " + enemy.getHp());
+            System.out.println(" 🧬 Vida del enemigo después del ataque: " + enemy.getHp());
             if (enemy.getHp() <= 0) {
                 enemy.setIsAlive(false);
             }
@@ -76,10 +76,10 @@ public class Warrior extends Character implements Attack {
             int q = enemy.getHp();
 
 
-            System.out.println(getName() + " Cachetada suave que  hace " + damage + " de pupita!");
+            System.out.println(getName() + " 👋 Cachetada suave que solo hace " + damage + " de pupita!");
 
             enemy.setHp(Math.max( 0, (q - damage)),false);
-            System.out.println("HP del enemigo después del ataque: " + enemy.getHp());
+            System.out.println(" 🧬 Vida del enemigo después del ataque: " + enemy.getHp());
 
             if (enemy.getHp() <= 0) {
                 enemy.setIsAlive(false);
@@ -90,7 +90,7 @@ public class Warrior extends Character implements Attack {
 
             setStamina(getStamina() +2);
 
-            System.out.println(getName() + "\n Dame un momento, por favor... Stamina vuelve!!!");
+            System.out.println(getName() + "\n 😮‍💨 Dame un momento, por favor... Stamina vuelve!!!");
         }
 
 

@@ -16,37 +16,45 @@ public class GameLauncher {
 
     // Metodo Launch que lanza el primer Scanner.
     public void launch() {
-        System.out.println("¡¡Te damos la bienvenida a Ironhack Battle!!");
+        System.out.println("          ¡¡⚔️Ironhack Battle!!⚔️");
 
         int option;
 
         while (true) {
             System.out.println("\n         Menú principal     ");
-            System.out.println("1. Crear primero los personajes");
-            System.out.println("2. Dejate de leches... A Pegarse!!");
+            System.out.println("1. Créate unos personajes");
+            System.out.println("2.  o Déjate de leches...Y A PEGARSE DIRECTAMENTE!!");
             System.out.println("3. Salir");
 
 
-            System.out.print("Elige una opción: ");
-            option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            System.out.print("Escribe el número de tu opción: ");
+            try {
+                option = Integer.parseInt(scanner.nextLine());
+                scanner.nextLine(); // Limpiar buffer
 
-            switch (option) {
-                case 1:
-                    MenuCreateCharacter.menuCreateCharacters(scanner, characters);
-                    break;
-                case 2:
-                    MenuFight.fight(scanner, characters);
-                    break;
-                case 3:
-                    System.out.println("¡Hasta pronto!");
-                    return;
-                default:
-                    System.out.println("❗ Opción no válida. Intenta de nuevo.");
+                switch (option) {
+                    case 1:
+                        MenuCreateCharacter.menuCreateCharacters(scanner, characters);
+                        break;
+                    case 2:
+                        MenuFight.fight(scanner, characters);
+                        break;
+                    case 3:
+                        System.out.println("¡Hasta pronto!");
+                        return;
+                    default:
+                        System.out.println("❗ Opción no válida. Intenta de nuevo.");
+                }
+            } catch (NumberFormatException e){
+               System.out.println("❗ Debes introducir un número válido.");
+            } catch (Exception e) {
+                System.out.println("❗ Ocurrió un error inesperado: " + e.getMessage());
+             }
+                }
             }
 
         }
 
-    }
+    
 
-}
+
