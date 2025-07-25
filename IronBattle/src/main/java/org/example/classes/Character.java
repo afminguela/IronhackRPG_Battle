@@ -6,12 +6,11 @@ import java.util.UUID;
 public abstract class Character {
     private String id = RandomId();
     private String name;
-    private int hp = -1  ; //random between 100-200 to warriors and 50-100 for wizards, representing the health points
-    // (Private member)
+    private int hp = -1  ;
     private boolean isAlive = true;
 
     public String RandomId() {
-        return this.id = UUID.randomUUID().toString(); // El ID se genera automáticamente al construir el objeto
+        return this.id = UUID.randomUUID().toString();
     }
     public Character(String name) {
         this.name = name;
@@ -42,9 +41,9 @@ public abstract class Character {
     }
 
 
-    public void setHp(int hp, boolean inicializacion) {
-        if (inicializacion) {
-            // Validaciones solo al crear el personaje
+    public void setHp(int hp, boolean firstTime) {
+        if (firstTime) {
+
             if (this instanceof Warrior) {
                 if (hp == -1) {
                     this.hp = new Random().nextInt(100, 200);
@@ -65,7 +64,7 @@ public abstract class Character {
                 this.hp = hp;
                             }
         } else {
-            // Actualización durante el juego, sin validaciones de rango
+
             this.hp = hp;
         }
     }
@@ -73,8 +72,6 @@ public abstract class Character {
     public void setIsAlive(boolean isAlive) {
         this.isAlive = isAlive;
     }
-
-    //methods
 
     public String getInfo() {
           return "Name: " + getName() + " Health Points: " + getHp();

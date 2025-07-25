@@ -14,7 +14,7 @@ public class GameLauncher {
     private List<Character> characters = new ArrayList<>();
 
 
-    // Metodo Launch que lanza el primer Scanner.
+
     public void launch() {
         System.out.println("          ¡¡⚔️Ironhack Battle!!⚔️");
 
@@ -30,7 +30,7 @@ public class GameLauncher {
             System.out.print("Escribe el número de tu opción: ");
             try {
                 option = Integer.parseInt(scanner.nextLine());
-                scanner.nextLine(); // Limpiar buffer
+                scanner.nextLine();
 
                 switch (option) {
                     case 1:

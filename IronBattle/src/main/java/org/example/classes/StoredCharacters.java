@@ -2,26 +2,22 @@ package org.example.classes;
 import java.io.*;
 import java.util.List;
 import java.util.Scanner;
-import org.example.classes.*;
+
 public class StoredCharacters {
 
-    private static final String FILE_NAME = "personaje.txt";
-
-    // printo toda la lista
-    // le pregunto por escanner que numero quiere guardar
-    //ejecuto guardar personaje, linea a linea.
-    // doy mensaje de OK
+    private static final String FILE_NAME = "storedCharacter.txt";
 
 
-    public static void guardarPersonaje(Scanner scanner, List<Character> characters) {
-// poner un try catch si eso.
+
+    public static void selectCharacterToStore(Scanner scanner, List<Character> characters) {
+
         MenuCreateCharacter.showAllCharacters(scanner, characters);
         if (!characters.isEmpty()) {
 
             System.out.print("Elige el número del personaje a guardar: ");
             try {
-                int personaje = scanner.nextInt();
-                Character pj1 = characters.get(personaje - 1);
+                int character = scanner.nextInt();
+                Character pj1 = characters.get(character - 1);
                 storeCharacter(pj1);
 
             } catch (NumberFormatException e) {
@@ -68,7 +64,7 @@ public class StoredCharacters {
             int hp = Integer.parseInt(reader.readLine());
 
 
-            Character personaje = null;
+            Character character = null;
 
             if (tipo.equalsIgnoreCase("warrior")) {
                 int stamina = Integer.parseInt(reader.readLine());
@@ -77,7 +73,7 @@ public class StoredCharacters {
                 warrior.setHp(hp, false);
                 warrior.setStamina(stamina);
                 warrior.setStrength(strength);
-                personaje = warrior;
+                character = warrior;
             } else if (tipo.equalsIgnoreCase("wizard")) {
                 int intelligence = Integer.parseInt(reader.readLine());
                 int mana = Integer.parseInt(reader.readLine());
@@ -85,18 +81,18 @@ public class StoredCharacters {
                 wizard.setHp(hp,false);
                 wizard.setIntelligence(intelligence);
                 wizard.setMana(mana);
-                personaje = wizard;
+                character = wizard;
             } else {
                 System.out.println("Tipo de personaje desconocido.");
                 return null;
             }
 
 
-            characters.add(personaje);
+            characters.add(character);
             System.out.println("✅ Personaje cargado correctamente.");
-            System.out.println( "✨✨ Has añadido Un "+ personaje.getClass().getSimpleName()+" Con " + personaje.getInfo() +
+            System.out.println( "✨✨ Has añadido Un "+ character.getClass().getSimpleName()+" Con " + character.getInfo() +
                     " ✨✨ " );
-            return personaje;
+            return character;
         } catch (IOException | NumberFormatException e) {
             System.out.println("❌ Error al cargar el personaje: " + e.getMessage());
             return null;
