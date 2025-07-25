@@ -19,8 +19,7 @@ public class MenuFight {
 
             try{
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
-
+            scanner.nextLine();
             switch (option) {
                 case 1:
                     chooseCharacters(scanner, characters);
@@ -46,8 +45,8 @@ public class MenuFight {
 
 
     }
-    public static String apodoRandom() {
-        String[] apodos = {
+    public static String nicknameRandom() {
+        String[] nickname = {
                 "El Destructor de Madrugadas",
                 "El Inesperadamente inesperado",
                 "El AbrazaFarolas",
@@ -61,9 +60,9 @@ public class MenuFight {
         };
 
 
-        int i = new Random().nextInt(apodos.length);
-        String apodoRandom = apodos[i];
-        return apodoRandom;
+        int i = new Random().nextInt(nickname.length);
+        String nicknameRandom = nickname[i];
+        return nicknameRandom;
     }
     private static void chooseCharacters(Scanner scanner, List<Character> characters) {
         MenuCreateCharacter.showAllCharacters(scanner,characters);
@@ -71,7 +70,7 @@ public class MenuFight {
         int idx1 = scanner.nextInt();
         System.out.print("🫵🏽 Elige el número del segundo personaje: ");
         int idx2 = scanner.nextInt() ;
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine();
 
         if (idx1 < 0 || idx1 >= characters.size() || idx2 < 0 || idx2 >= characters.size() || idx1 == idx2) {
             System.out.println("❗ Selección inválida. Intenta de nuevo.");
@@ -90,17 +89,17 @@ public class MenuFight {
 
     private static void battleCustom(Character pj1, Character pj2) {
         Scanner scanner = new Scanner(System.in);
-// empieza el combate
+
         int round = 1;
         System.out.println("\n-+-+-+-+-+-+-+ 🥊 Es la Hora de las Tortas 🥊 -+-+-+-+--+-");
         System.out.println("          "+ pj1.getName() +" VS " + pj2.getName());
         System.out.println("\n");
 
         while (pj1.getIsAlive() && pj2.getIsAlive()) {
-            // decir por pantalla en que round estamos
+
 
             System.out.println("-+-+-+-+-+-+-+  Round "+ round +" -+-+-+-+--+-");
-            // vamos a ejecutar las funciones Attack de pj1 y pj2
+
 
             pj1.attack(pj2);
             System.out.println("\n");
@@ -124,16 +123,16 @@ public class MenuFight {
         } else if (pj1.getIsAlive()) {
 
             System.out.println("El Ganador Es:  ");
-            System.out.println("                El Increíble: " + pj1.getName() +" "+ apodoRandom());
+            System.out.println("                El Increíble: " + pj1.getName() +" "+ nicknameRandom());
         } else {
             System.out.println("El Ganador Es:  ");
-            System.out.println("                El Increíble: " + pj2.getName() +" "+ apodoRandom());
+            System.out.println("                El Increíble: " + pj2.getName() +" "+ nicknameRandom());
         }
 
     }
 
     private static void battle(Scanner scanner,List<Character> characters) {
-        // elegimos dos personajes Random
+
         if (characters.isEmpty()){
              while (characters.size() < 3){
                 MenuCreateCharacter.createRandomCharacter(scanner, characters);
@@ -146,16 +145,16 @@ public class MenuFight {
         i = new Random().nextInt(characters.size());
         Character pj2 = characters.get(i);
 
-        // empieza el combate
+
         int round = 1;
         System.out.println("\n");
         System.out.println("\n-+-+-+-+-+-+-+ 🥊 Es la Hora de las Tortas 🥊 -+-+-+-+--+-");
         System.out.println("          "+pj1.getName() +" VS " + pj2.getName());
 
         while (pj1.getIsAlive() && pj2.getIsAlive()) {
-            // decir por pantalla en que round estamos
+
             System.out.println("-+-+-+-+-+-+-+ Round "+ round +" -+-+-+-+--+-");
-            // vamos a ejecutar las funciones Attack de pj1 y pj2
+
             pj1.attack(pj2);
             System.out.println("\n");
             pj2.attack(pj1);
@@ -164,7 +163,7 @@ public class MenuFight {
             System.out.println("\n Dale al Enter para Segur con el combate");
             String input = scanner.nextLine();
 
-            // vamos a sumar 1 al round
+
             round++;
 
            if (pj1.getHp() <= 0) {
@@ -180,13 +179,14 @@ public class MenuFight {
                         "pie y sólo puede quedar uno!!");
 
                 battleCustom(pj1, pj2);
+
             } else if (pj1.getIsAlive()) {
-                apodoRandom();
+                nicknameRandom();
                 System.out.println("El Ganador Es:  ");
-                System.out.println("                El Increíble: " + pj1.getName() +" "+ apodoRandom());
+                System.out.println("                El Increíble: " + pj1.getName() +" "+ nicknameRandom());
             } else {
                 System.out.println("El Ganador Es:  ");
-                System.out.println("                El Increíble: " + pj2.getName() +" "+ apodoRandom());
+                System.out.println("                El Increíble: " + pj2.getName() +" "+ nicknameRandom());
             }
 
         }

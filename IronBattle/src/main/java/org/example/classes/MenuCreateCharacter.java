@@ -14,14 +14,16 @@ public class MenuCreateCharacter {
         while(true) {
 
             System.out.println("\n       Menú principal");
-            System.out.println("1. Crear personaje personalizado");
-            System.out.println("2. Crear personaje aleatorio");
-            System.out.println("3. Mostrar personajes creados");
-            System.out.println("4. ↩️ Vuelve al Menú principal");
+            System.out.println("1. ✨ Crear personaje personalizado");
+            System.out.println("2. 🔀 Crear personaje aleatorio");
+            System.out.println("3. 📜 Mostrar personajes creados");
+            System.out.println("4. 💾 Guarda tu  personajes favorito");
+            System.out.println("5. ♻️ Carga tu personaje ya creado");
+            System.out.println("6. ↩️ Vuelve al Menú principal");
             System.out.print("Elige una opción: ");
             try {
                 option = scanner.nextInt();
-                scanner.nextLine(); // Limpiar buffer
+                scanner.nextLine();
 
                 switch (option) {
                     case 1:
@@ -34,6 +36,13 @@ public class MenuCreateCharacter {
                         showAllCharacters(scanner, characters);
                         break;
                     case 4:
+                        StoredCharacters.selectCharacterToStore(scanner, characters);
+                        break;
+
+                    case 5:
+                        StoredCharacters.chargeCharacter(scanner, characters);
+                        break;
+                    case 6:
                         System.out.println(" ↩️ Volvemos atrás!");
                         return;
                     default:
@@ -61,13 +70,11 @@ public class MenuCreateCharacter {
         System.out.println("¿Que clase eliges?: ");
         int classOption = Integer.parseInt(scanner.nextLine());
         scanner.nextLine();
- // Limpiar buffer
 
         if (classOption == 1) {
-// llamamos al constructor de 1 sola variable y le pasamos su parametro que lo hemos cogido del scaner en
-            // linea 49
+
             Warrior warrior = new Warrior(name);
-            // llamar a las funciones ramdom para rellenar el resto de parametros.
+
             warrior.setHp(warrior.getHp(),true);
             warrior.setStamina(warrior.getStamina());
             warrior.setStrength(warrior.getStrength());
@@ -88,11 +95,11 @@ public class MenuCreateCharacter {
     }
 
 
-// método de PJ randomizado
+
 
     public static void createRandomCharacter(Scanner scanner, List<Character> characters) {
 
-        String[] nombres = { "Petronilo",
+        String[] names = { "Petronilo",
         "Eufrasio",
                 "Aniceto",
                 "Filogonio",
@@ -104,9 +111,9 @@ public class MenuCreateCharacter {
                 "Hermenegildo"};
 
 
-        int i = new Random().nextInt(nombres.length);
-        String nombreFeo = nombres[i];
-        String name = nombreFeo + " "+ (characters.size() + 1);
+        int i = new Random().nextInt(names.length);
+        String uglyName = names[i];
+        String name = uglyName + " "+ (characters.size() + 1);
         Random random = new Random();
         if (random.nextBoolean()) {
             Warrior warrior = new Warrior(name);
@@ -126,7 +133,7 @@ public class MenuCreateCharacter {
         }
     }
 
-    // Muestra todos los personajes de la lista de personajes
+
     public static void showAllCharacters(Scanner scanner, List<Character> characters) {
         if (characters.isEmpty()) {
             System.out.println("❗ No hay personajes creados aún.");
@@ -136,12 +143,12 @@ public class MenuCreateCharacter {
         System.out.println("\n  📋 Lista de personajes creados:");
 
         int counter = 0;
-        for (Character personaje : characters) {   // por cada personaje en el array eb
+        for (Character character : characters) {
             counter++;
 
-            personaje.getInfo();
+            character.getInfo();
             System.out.print(counter);
-            System.out.print(" - Info personaje:  " + personaje.getInfo());
+            System.out.print(" - Info personaje:  " + character.getInfo());
 
             System.out.println("\n");
         }

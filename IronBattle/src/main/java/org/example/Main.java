@@ -8,7 +8,6 @@ public class Main {
         GameLauncher game = new GameLauncher();
         game.launch();
 
-        // 1º Hacer la importación correctamente.
-        // 2º Llamar al constructor correctamente. Antes new org.example.GameLauncher() -> Ahora GameLauncher();
+
     }
 }
